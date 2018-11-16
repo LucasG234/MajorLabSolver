@@ -15,33 +15,35 @@ public class CreateCode
 		testArr[0][1] = Color.BLUE;
 		testArr[1][1] = Color.RED;
 		
-		System.out.println(generateJava("Picture", testArr));
+		System.out.println(generateJava("Picture", testArr, 10, 10));
 	}
 	
-	
-	public static String generateJava(String classTitle, Color[][] colorArray)
+	public static String generateJava(String classTitle, Color[][] colorArray, int xStep, int yStep)
 	{
 		HashMap<Color, ArrayList<Coord>> map = parseArray(colorArray);
 		
 		String out = generateJavaHeader(classTitle);
-		for(Color c : map.keySet())
+		for(Color col : map.keySet())
 		{
-			if(c!=null)
+			if(col!=null)
 			{
-				out += String.format("\t\tg.setColor(new %s);%n", colorToString(c));
+				out += String.format("\t\tg.setColor(new %s);%n", colorToString(col));
+				
+				for(Coord cor : map.get(col))
+				{
+					out += String.format("\t\tg.fillRect(%d,%d,%d,%d);%n", xStep*cor.c, yStep*cor.r, xStep, yStep);
+				}
+				
+				out += "\n";
 			}
 		}
+		
+		out += generateJavaEnding();
 		
 		return out;
 	}
 	
-	/*
-	 * Converts color objects to String format usable in java code
-	 */
-	public static String colorToString(Color c)
-	{
-		return String.format("Color(%d,%d,%d)", c.getRed(), c.getGreen(), c.getBlue());
-	}
+	
 	
 	/*
 	 * Converts the matrix of color values for pixels into 
@@ -66,6 +68,14 @@ public class CreateCode
 	}
 	
 	/*
+	 * Converts color objects to String format usable in java code
+	 */
+	public static String colorToString(Color c)
+	{
+		return String.format("Color(%d,%d,%d)", c.getRed(), c.getGreen(), c.getBlue());
+	}
+	
+	/*
 	 * Create class and method declaration for java file
 	 */
 	public static String generateJavaHeader(String classTitle)
@@ -78,6 +88,14 @@ public class CreateCode
 		return out;
 	}
 	
+	public static String generateJavaEnding()
+	{
+		String out = "";
+		out+= "\t}\n";
+		out+="}";
+		return out;
+	}
+	
 	/*
 	 * Creates Runner HTML File for Applet
 	 */
@@ -85,5 +103,6 @@ public class CreateCode
 	{
 		return String.format("<APPLET CODE=\"%s\" WIDTH=%d HEIGHT=%d>%n</APPLET>", classFile, xSize, ySize);
 	}
+	
 }
 
