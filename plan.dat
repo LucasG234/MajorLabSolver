@@ -8,7 +8,7 @@ Each pixel = drawRect
 Frontend:
 JFrame based
 Color in pixel by pixel
-Save output = .java file which can display the created image as an applet
+Save output = html and .class file which can display the created image as an applet
 
 
 ADDITIONAL

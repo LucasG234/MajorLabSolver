@@ -5,6 +5,44 @@ import java.util.*;
 
 public class CreateCode
 {
+	//Main method used for testing purposes only
+	public static void main(String[] args)
+	{
+		Color[][] testArr = new Color[2][2];
+		
+		testArr[0][0] = Color.RED;
+		testArr[1][0] = Color.RED;
+		testArr[0][1] = Color.BLUE;
+		testArr[1][1] = Color.RED;
+		
+		System.out.println(generateJava("Picture", testArr));
+	}
+	
+	
+	public static String generateJava(String classTitle, Color[][] colorArray)
+	{
+		HashMap<Color, ArrayList<Coord>> map = parseArray(colorArray);
+		
+		String out = generateJavaHeader(classTitle);
+		for(Color c : map.keySet())
+		{
+			if(c!=null)
+			{
+				out += String.format("\t\tg.setColor(new %s);%n", colorToString(c));
+			}
+		}
+		
+		return out;
+	}
+	
+	/*
+	 * Converts color objects to String format usable in java code
+	 */
+	public static String colorToString(Color c)
+	{
+		return String.format("Color(%d,%d,%d)", c.getRed(), c.getGreen(), c.getBlue());
+	}
+	
 	/*
 	 * Converts the matrix of color values for pixels into 
 	 * Map of used colors to their relative pixel locations
@@ -25,13 +63,6 @@ public class CreateCode
 			}
 		
 		return map;
-	}
-	
-	public static String generateJava(HashMap<Color, ArrayList<Coord>> map)
-	{
-		String out = "";
-		
-		return out;
 	}
 	
 	/*

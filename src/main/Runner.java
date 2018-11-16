@@ -1,5 +1,7 @@
 package main;
 
+import ui.*;
+
 public class Runner
 {
 	public static void main(String[] args)

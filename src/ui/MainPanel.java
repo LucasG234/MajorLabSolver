@@ -1,4 +1,4 @@
-package main;
+package ui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,7 +8,7 @@ public class MainPanel extends JFrame
 {
 	public MainPanel()
 	{
-		super("Stites Lab Cheater");
+		super("Stites Lab Solver");
 		setSize(700,600);
 		
 		Container pane = getContentPane();
