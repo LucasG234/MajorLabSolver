@@ -24,3 +24,4 @@ printToFile
 
 TODO:
 verification of valid class name
+private variables (security upgrades)
