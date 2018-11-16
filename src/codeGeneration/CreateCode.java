@@ -27,11 +27,32 @@ public class CreateCode
 		return map;
 	}
 	
-	public String generateJava(HashMap<Color, ArrayList<Coord>> map)
+	public static String generateJava(HashMap<Color, ArrayList<Coord>> map)
 	{
 		String out = "";
 		
 		return out;
+	}
+	
+	/*
+	 * Create class and method declaration for java file
+	 */
+	public static String generateJavaHeader(String classTitle)
+	{
+		String out = "";
+		out += "import java.awk.*;\nimport java.applet.*;\n\n";
+		out += String.format("public class %s extends Applet%n", classTitle);
+		out += "{\n";
+		out += "\t{\n";
+		return out;
+	}
+	
+	/*
+	 * Creates Runner HTML File for Applet
+	 */
+	public static String generateHTML(String classFile, int xSize, int ySize)
+	{
+		return String.format("<APPLET CODE=\"%s\" WIDTH=%d HEIGHT=%d>%n</APPLET>", classFile, xSize, ySize);
 	}
 }
 

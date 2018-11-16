@@ -21,3 +21,6 @@ User clicks export =>
 parseArray
 generateJava
 printToFile
+
+TODO:
+verification of valid class name
