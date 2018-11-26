@@ -2,8 +2,7 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.*;
-import javax.swing.*;
+
 import codeGeneration.*;
 
 public class PixelListener implements MouseMotionListener, MouseListener, KeyListener
@@ -22,7 +21,10 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 		int x = e.getX();
 		int y = e.getY();
 		
-		Graphics g = ((JPanel)e.getSource()).getGraphics();
+		PixelCanvasPanel source = (PixelCanvasPanel)e.getSource();
+		Graphics g = source.getGraphics();
+		
+		source.colors[y / yStep][x / xStep] = Color.BLACK;
 		g.fillRect((x - x % xStep), (y - y%yStep), xStep, yStep);
 	}
 	
@@ -35,6 +37,8 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 	public void keyTyped(KeyEvent arg0)
 	{
 		PixelCanvasPanel source = (PixelCanvasPanel)arg0.getSource();
+		
+		System.out.println(CreateCode.generateJava("Test", source.colors, xStep, yStep));
 	}
 	
 	//No action required on these triggers

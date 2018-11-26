@@ -2,29 +2,25 @@ package codeGeneration;
 
 import java.awt.*;
 import java.util.*;
-import java.awt.image.*;
 
 public class CreateCode
 {
 	//Main method used for testing purposes only
-//	public static void main(String[] args)
-//	{
-//		Color[][] testArr = new Color[2][2];
-//		
-//		testArr[0][0] = Color.RED;
-//		testArr[1][0] = Color.RED;
-//		testArr[0][1] = Color.BLUE;
-//		testArr[1][1] = Color.RED;
-//		
-//		System.out.println(generateJava("Picture", testArr, 10, 10));
-//	}
-	
-	/*
-	 * Main method to generate the java code
-	 */
-	public static String generateJava(String classTitle, BufferedImage screenshot, int xStep, int yStep)
+	public static void main(String[] args)
 	{
-		HashMap<Color, ArrayList<Coord>> map = parseArray(convertBufferedImage(screenshot, xStep, yStep));
+		Color[][] testArr = new Color[2][2];
+		
+		testArr[0][0] = Color.RED;
+		testArr[1][0] = Color.RED;
+		testArr[0][1] = Color.BLUE;
+		testArr[1][1] = Color.RED;
+		
+		System.out.println(generateJava("Picture", testArr, 10, 10));
+	}
+	
+	public static String generateJava(String classTitle, Color[][] colorArray, int xStep, int yStep)
+	{
+		HashMap<Color, ArrayList<Coord>> map = parseArray(colorArray);
 		
 		String out = generateJavaHeader(classTitle);
 		for(Color col : map.keySet())
@@ -47,15 +43,7 @@ public class CreateCode
 		return out;
 	}
 	
-	/*
-	 * This method will convert image into an array
-	 * Handles the pixel logic
-	 * Currently in progress
-	 */
-	public static Color[][] convertBufferedImage(BufferedImage bi, int xStep, int yStep)
-	{
-		return null;
-	}
+	
 	
 	/*
 	 * Converts the matrix of color values for pixels into 
@@ -93,9 +81,10 @@ public class CreateCode
 	public static String generateJavaHeader(String classTitle)
 	{
 		String out = "";
-		out += "import java.awk.*;\nimport java.applet.*;\n\n";
+		out += "import java.awt.*;\nimport java.applet.*;\n\n";
 		out += String.format("public class %s extends Applet%n", classTitle);
 		out += "{\n";
+		out += "\tpublic void paint(Graphics g)";
 		out += "\t{\n";
 		return out;
 	}
@@ -117,4 +106,3 @@ public class CreateCode
 	}
 	
 }
-
