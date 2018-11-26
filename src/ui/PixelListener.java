@@ -5,6 +5,9 @@ import java.awt.event.*;
 
 import codeGeneration.*;
 
+/*
+ * Multipurpose listener used for keyboard and mouse input within PixelPanel
+ */
 public class PixelListener implements MouseMotionListener, MouseListener, KeyListener
 {
 	int xStep;
@@ -16,12 +19,17 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 		this.yStep = yStep;
 	}
 	
+	/*
+	 * Draw onto current pixel with drawRect
+	 * Saves information into the PixelPanel's Color[][]
+	 * TODO: add colors
+	 */
 	public void mouseClicked(MouseEvent e)
 	{
 		int x = e.getX();
 		int y = e.getY();
 		
-		PixelCanvasPanel source = (PixelCanvasPanel)e.getSource();
+		PixelPanel source = (PixelPanel)e.getSource();
 		Graphics g = source.getGraphics();
 		
 		source.colors[y / yStep][x / xStep] = Color.BLACK;
@@ -36,7 +44,7 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 	//Currently testing save feature on any key press
 	public void keyTyped(KeyEvent arg0)
 	{
-		PixelCanvasPanel source = (PixelCanvasPanel)arg0.getSource();
+		PixelPanel source = (PixelPanel)arg0.getSource();
 		
 		System.out.println(CreateCode.generateJava("Test", source.colors, xStep, yStep));
 	}

@@ -5,24 +5,15 @@ import java.util.*;
 
 public class CreateCode
 {
-	//Main method used for testing purposes only
-	public static void main(String[] args)
-	{
-		Color[][] testArr = new Color[2][2];
-		
-		testArr[0][0] = Color.RED;
-		testArr[1][0] = Color.RED;
-		testArr[0][1] = Color.BLUE;
-		testArr[1][1] = Color.RED;
-		
-		System.out.println(generateJava("Picture", testArr, 10, 10));
-	}
-	
+	/*
+	 * Main generation of code
+	 */
 	public static String generateJava(String classTitle, Color[][] colorArray, int xStep, int yStep)
 	{
 		HashMap<Color, ArrayList<Coord>> map = parseArray(colorArray);
 		
 		String out = generateJavaHeader(classTitle);
+		
 		for(Color col : map.keySet())
 		{
 			if(col!=null)
@@ -43,11 +34,9 @@ public class CreateCode
 		return out;
 	}
 	
-	
-	
 	/*
 	 * Converts the matrix of color values for pixels into 
-	 * Map of used colors to their relative pixel locations
+	 * map of used colors to their relative pixel locations
 	 */
 	public static HashMap<Color, ArrayList<Coord>> parseArray(Color[][] in)
 	{
@@ -89,20 +78,22 @@ public class CreateCode
 		return out;
 	}
 	
-	public static String generateJavaEnding()
-	{
-		String out = "";
-		out+= "\t}\n";
-		out+="}";
-		return out;
-	}
-	
 	/*
-	 * Creates Runner HTML File for Applet
+	 * HTML runner file for Applet
 	 */
 	public static String generateHTML(String classFile, int xSize, int ySize)
 	{
 		return String.format("<APPLET CODE=\"%s\" WIDTH=%d HEIGHT=%d>%n</APPLET>", classFile, xSize, ySize);
 	}
+	
+	/*
+	 * Ending braces for java file
+	 */
+	public static String generateJavaEnding()
+	{
+		return "\t}\n}";
+	}
+	
+	
 	
 }

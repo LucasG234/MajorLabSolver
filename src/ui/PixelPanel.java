@@ -3,8 +3,10 @@ package ui;
 import java.awt.*;
 import javax.swing.*;
 
-public class PixelCanvasPanel extends JPanel
+public class PixelPanel extends JPanel
 {
+	private static final long serialVersionUID = 1L;
+	
 	//pixel size and Color[][] currently hard coded
 	int xStep = 150;
 	int yStep = 150;
@@ -12,7 +14,7 @@ public class PixelCanvasPanel extends JPanel
 	
 	Color[][] colors = new Color[size.height / yStep][size.width / xStep];
 	
-	public PixelCanvasPanel()
+	public PixelPanel()
 	{
 		for(int r = 0; r < colors.length; r++)
 			for(int c = 0; c < colors[r].length; c++)

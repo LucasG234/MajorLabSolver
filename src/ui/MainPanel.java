@@ -5,6 +5,8 @@ import javax.swing.*;
 
 public class MainPanel extends JFrame
 {
+	private static final long serialVersionUID = 1L;
+
 	/*
 	 * Primary panel holding UI
 	 */
@@ -21,20 +23,23 @@ public class MainPanel extends JFrame
 		//TODO: initialization (ask for size and pixel number)
 		
 		//Default action of program
-		
 		Container pane = getContentPane();
 		pane.setLayout(new BorderLayout());
 				
 		pane.add(pixelHolder(), BorderLayout.CENTER);
 	}
 	
+	/*
+	 * FlowLayout allows main canvas to move instead of resizing
+	 * when window is resized
+	 */
 	public static JPanel pixelHolder()
 	{
 		JPanel holder = new JPanel();
 		
 		holder.setLayout(new FlowLayout());
 		
-		holder.add(new PixelCanvasPanel());
+		holder.add(new PixelPanel());
 		
 		return holder;
 	}
