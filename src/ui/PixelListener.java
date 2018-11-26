@@ -2,7 +2,9 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
 import javax.swing.*;
+import codeGeneration.*;
 
 public class PixelListener implements MouseMotionListener, MouseListener, KeyListener
 {
@@ -22,7 +24,6 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 		
 		Graphics g = ((JPanel)e.getSource()).getGraphics();
 		g.fillRect((x - x % xStep), (y - y%yStep), xStep, yStep);
-		
 	}
 	
 	public void mouseDragged(MouseEvent e)
@@ -30,12 +31,10 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 		mouseClicked(e);
 	}
 
-
+	//Currently testing save feature on any key press
 	public void keyTyped(KeyEvent arg0)
 	{
-		System.out.println("Currently testing save feature on any key press");
-		
-		
+		PixelCanvasPanel source = (PixelCanvasPanel)arg0.getSource();
 	}
 	
 	//No action required on these triggers

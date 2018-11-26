@@ -17,7 +17,7 @@ public class MainPanel extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Default size which the window opens at
-		setSize(600,600);
+		setSize(800,700);
 		
 		//TODO: initialization (ask for size and pixel number)
 		
@@ -25,7 +25,18 @@ public class MainPanel extends JFrame
 		
 		Container pane = getContentPane();
 		pane.setLayout(new BorderLayout());
+				
+		pane.add(pixelHolder(), BorderLayout.CENTER);
+	}
+	
+	public static JPanel pixelHolder()
+	{
+		JPanel holder = new JPanel();
 		
-		pane.add(new PixelCanvasPanel(), BorderLayout.CENTER);
+		holder.setLayout(new FlowLayout());
+		
+		holder.add(new PixelCanvasPanel());
+		
+		return holder;
 	}
 }

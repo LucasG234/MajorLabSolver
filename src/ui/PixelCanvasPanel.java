@@ -13,6 +13,13 @@ public class PixelCanvasPanel extends JPanel
 		
 		setFocusable(true);
 		
+		//Size currently immutable
+		setPreferredSize(new Dimension(600,600));
+		setMinimumSize(new Dimension(600,600));
+		setMaximumSize(new Dimension(600,600));
+		
+		setBackground(Color.RED);
+		
 		addMouseListener(listener);
 		addMouseMotionListener(listener);
 		addKeyListener(listener);
