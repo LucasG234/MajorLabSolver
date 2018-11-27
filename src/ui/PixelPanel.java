@@ -8,17 +8,22 @@ public class PixelPanel extends JPanel
 	private static final long serialVersionUID = 1L;
 	
 	//pixel size and Color[][] currently hard coded
-	int xStep = 150;
-	int yStep = 150;
+	int xStep = 15;
+	int yStep = 15;
 	Dimension size = new Dimension(600,600);
 	
 	Color[][] colors = new Color[size.height / yStep][size.width / xStep];
+	
+	//What color is currently being drawn with
+	Color curr = Color.BLACK;
+	//Color of the background (ADD FUNCTIONALITY)
+	Color background = Color.WHITE;
 	
 	public PixelPanel()
 	{
 		for(int r = 0; r < colors.length; r++)
 			for(int c = 0; c < colors[r].length; c++)
-				colors[r][c] = Color.WHITE;
+				colors[r][c] = background;
 		
 		
 		PixelListener listener = new PixelListener(xStep,yStep);

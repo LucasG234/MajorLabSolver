@@ -8,20 +8,15 @@ Each pixel = drawRect
 Frontend:
 JFrame based
 Color in pixel by pixel
-Save output = html and .class file which can display the created image as an applet
+Save output = html and .java file which can display the created image as an applet
 
 
 ADDITIONAL
-define classes and inheritance
+Work on UI
+Define classes and inheritance
+Define background color
+Output in bigger rectangles
+Save & Parse for later use (in Java & as an image)
 
-
-
-User clicks export => 
-
-parseArray
-generateJava
-printToFile
-
-TODO:
 verification of valid class name
 private variables (security upgrades)

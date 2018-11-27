@@ -32,8 +32,12 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 		PixelPanel source = (PixelPanel)e.getSource();
 		Graphics g = source.getGraphics();
 		
-		source.colors[y / yStep][x / xStep] = Color.BLACK;
-		g.fillRect((x - x % xStep), (y - y%yStep), xStep, yStep);
+		//Check if in bounds
+		if(y > 0 && x > 0 && y < source.getHeight() && x < source.getWidth())
+		{
+			source.colors[y / yStep][x / xStep] = source.curr;
+			g.fillRect((x - x % xStep), (y - y%yStep), xStep, yStep);
+		}
 	}
 	
 	public void mouseDragged(MouseEvent e)
