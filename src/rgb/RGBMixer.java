@@ -20,6 +20,11 @@ public class RGBMixer extends JPanel
 		
 		addMouseListener(new RGBListener());
 		addMouseMotionListener(new RGBListener());
+		
+		//allows absolute positioning of Components
+		//setLayout(null);
+		
+		setFocusable(true);
 	}
 	
 	public void paintComponent(Graphics g)
