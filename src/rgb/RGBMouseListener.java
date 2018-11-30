@@ -29,9 +29,6 @@ public class RGBMouseListener implements MouseListener, MouseMotionListener
 			}
 		}
 		
-		//Unfocuses from textfield whenever panel is pressed
-		source.grabFocus();
-		
 		source.repaint();
 	}
 	
