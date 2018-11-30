@@ -3,7 +3,7 @@ package rgb;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class RGBListener implements MouseListener, MouseMotionListener
+public class RGBMouseListener implements MouseListener, MouseMotionListener
 {
 
 	public void mouseClicked(MouseEvent e)
@@ -28,6 +28,9 @@ public class RGBListener implements MouseListener, MouseMotionListener
 				source.blue = 255-(y-160);
 			}
 		}
+		
+		//Unfocuses from textfield whenever panel is pressed
+		source.grabFocus();
 		
 		source.repaint();
 	}
