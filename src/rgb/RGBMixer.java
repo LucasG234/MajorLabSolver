@@ -21,6 +21,8 @@ public class RGBMixer extends JPanel
 		addMouseListener(new RGBMouseListener());
 		addMouseMotionListener(new RGBMouseListener());
 		
+		setBackground(Color.WHITE);
+		setOpaque(true);
 		setFocusable(true);
 		
 		//textFields() creates a content pane which covers the panel, containing the text fields
@@ -33,8 +35,6 @@ public class RGBMixer extends JPanel
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D)g;
-		
-		
 		
 		//Draw Bars
 		g2.setColor(new Color(red, green, blue));
@@ -58,7 +58,7 @@ public class RGBMixer extends JPanel
 		g2.drawRect(250, 160, 50, 255);
 	}
 	
-	public static JPanel textFields()
+	public JPanel textFields()
 	{
 		JPanel pane = new JPanel();
 		pane.setOpaque(false);
@@ -69,14 +69,18 @@ public class RGBMixer extends JPanel
 		RGBNumberFormatter formatter = new RGBNumberFormatter();
 		
 		JFormattedTextField redField = new JFormattedTextField(formatter);
+		redField.getDocument().addDocumentListener(new RGBDocumentListener(Color.RED, this));
 		redField.setValue(0);
 		redField.setBounds(110,435,30,20);
+		redField.setFocusable(true);
 		
 		JFormattedTextField greenField = new JFormattedTextField(formatter);
+		greenField.getDocument().addDocumentListener(new RGBDocumentListener(Color.GREEN, this));
 		greenField.setValue(0);
 		greenField.setBounds(185,435,30,20);
 		
 		JFormattedTextField blueField = new JFormattedTextField(formatter);
+		blueField.getDocument().addDocumentListener(new RGBDocumentListener(Color.BLUE, this));
 		blueField.setValue(0);
 		blueField.setBounds(260,435,30,20);
 		
@@ -85,5 +89,22 @@ public class RGBMixer extends JPanel
 		pane.add(greenField);
 		
 		return(pane);
+	}
+	
+	public void setColor(Color c, int val)
+	{
+		if(c == Color.RED)
+		{
+			red = val;
+		}
+		else if(c == Color.BLUE)
+		{
+			blue = val;
+		}
+		else if(c == Color.GREEN)
+		{
+			green = val;
+		}
+		repaint();
 	}
 }

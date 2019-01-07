@@ -29,6 +29,9 @@ public class RGBMouseListener implements MouseListener, MouseMotionListener
 			}
 		}
 		
+		//forces TextFields to focus on window and update values
+		//source.grabFocus();
+		
 		source.repaint();
 	}
 	
