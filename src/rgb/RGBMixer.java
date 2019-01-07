@@ -10,8 +10,8 @@ public class RGBMixer extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
-	public int red, green, blue;
-	public JFormattedTextField redField, greenField, blueField;
+	private int red, green, blue;
+	private JFormattedTextField redField, greenField, blueField;
 	
 	public RGBMixer()
 	{
@@ -59,7 +59,7 @@ public class RGBMixer extends JPanel
 		g2.drawRect(250, 160, 50, 255);
 	}
 	
-	public JPanel textFields()
+	private JPanel textFields()
 	{
 		JPanel pane = new JPanel();
 		pane.setOpaque(false);
@@ -105,6 +105,23 @@ public class RGBMixer extends JPanel
 		else if(c == Color.GREEN)
 		{
 			green = val;
+		}
+		repaint();
+	}
+	
+	public void setField(Color c, int val)
+	{
+		if(c == Color.RED)
+		{
+			redField.setValue(val);
+		}
+		else if(c == Color.BLUE)
+		{
+			blueField.setValue(val);
+		}
+		else if(c == Color.GREEN)
+		{
+			greenField.setValue(val);
 		}
 		repaint();
 	}

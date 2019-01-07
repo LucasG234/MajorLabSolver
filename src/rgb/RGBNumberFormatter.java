@@ -1,9 +1,6 @@
 package rgb;
 
-import java.awt.*;
 import java.text.*;
-
-import javax.swing.*;
 import javax.swing.text.*;
 
 public class RGBNumberFormatter extends NumberFormatter

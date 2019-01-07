@@ -7,8 +7,8 @@ import java.awt.Color;
 
 public class RGBDocumentListener implements DocumentListener
 {
-	Color col;
-	RGBMixer source;
+	private Color col;
+	private RGBMixer source;
 	
 	public RGBDocumentListener(Color c, RGBMixer source)
 	{
@@ -41,7 +41,7 @@ public class RGBDocumentListener implements DocumentListener
 			} catch(java.lang.NumberFormatException e1) 
 			{
 				//No change if non number is entered
-				//Formatted text box will reset if non number is left in
+				//Formatted text box will reset if nonumber is left in
 			}
 		}
 		

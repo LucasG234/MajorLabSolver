@@ -19,17 +19,17 @@ public class RGBMouseListener implements MouseListener, MouseMotionListener
 			if(x >= 100 && x <= 150)
 			{
 				source.setColor(Color.RED, 255-(y-160));
-				source.redField.setValue(255-(y-160));
+				source.setField(Color.RED, 255-(y-160));
 			}
 			else if(x >= 175 && x <= 225)
 			{
 				source.setColor(Color.GREEN, 255-(y-160));
-				source.greenField.setValue(255-(y-160));
+				source.setField(Color.GREEN, 255-(y-160));
 			}
 			else if(x >= 250 && x <= 300)
 			{
 				source.setColor(Color.BLUE, 255-(y-160));
-				source.blueField.setValue(255-(y-160));
+				source.setField(Color.BLUE, 255-(y-160));
 			}
 		}
 		
