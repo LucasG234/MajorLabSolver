@@ -11,6 +11,7 @@ public class RGBMixer extends JPanel
 	private static final long serialVersionUID = 1L;
 	
 	public int red, green, blue;
+	public JFormattedTextField redField, greenField, blueField;
 	
 	public RGBMixer()
 	{
@@ -68,18 +69,18 @@ public class RGBMixer extends JPanel
 		
 		RGBNumberFormatter formatter = new RGBNumberFormatter();
 		
-		JFormattedTextField redField = new JFormattedTextField(formatter);
+		redField = new JFormattedTextField(formatter);
 		redField.getDocument().addDocumentListener(new RGBDocumentListener(Color.RED, this));
 		redField.setValue(0);
 		redField.setBounds(110,435,30,20);
 		redField.setFocusable(true);
 		
-		JFormattedTextField greenField = new JFormattedTextField(formatter);
+		greenField = new JFormattedTextField(formatter);
 		greenField.getDocument().addDocumentListener(new RGBDocumentListener(Color.GREEN, this));
 		greenField.setValue(0);
 		greenField.setBounds(185,435,30,20);
 		
-		JFormattedTextField blueField = new JFormattedTextField(formatter);
+		blueField = new JFormattedTextField(formatter);
 		blueField.getDocument().addDocumentListener(new RGBDocumentListener(Color.BLUE, this));
 		blueField.setValue(0);
 		blueField.setBounds(260,435,30,20);
