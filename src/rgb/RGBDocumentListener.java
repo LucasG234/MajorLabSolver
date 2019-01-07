@@ -23,19 +23,33 @@ public class RGBDocumentListener implements DocumentListener
 		try
 		{
 			text = doc.getText(0, doc.getLength());
-		} catch (BadLocationException e1)
+		} catch(BadLocationException e1) //should never be accessed
 		{
 			e1.printStackTrace();
 		}
 		
 		int num = 0;
-		if(text.length() > 0)
+		if(text.length() > 3)
 		{
+			num = 255;
+		}
+		else if(text.length() > 0)
+		{
+			try 
+			{
 			num = Integer.parseInt(text);
+			} catch(java.lang.NumberFormatException e1) 
+			{
+				//No change if non number is entered
+				//Formatted text box will reset if non number is left in
+			}
 		}
 		
-		if(num > -1 && num < 256)
+		//numbers between 255 & 999 are read in but set to 255
+		if(num > -1)
 		{
+			if(num > 256)
+				num = 255;
 			source.setColor(col, num);
 		}
 	}
