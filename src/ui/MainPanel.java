@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.*;
 import javax.swing.*;
+import rgb.*;
 
 public class MainPanel extends JFrame
 {
@@ -18,7 +19,7 @@ public class MainPanel extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Default size which the window opens at
-		setSize(800,700);
+		setSize(1000,700);
 		
 		//TODO: initialization (ask for size and pixel number)
 		
@@ -27,6 +28,7 @@ public class MainPanel extends JFrame
 		pane.setLayout(new BorderLayout());
 				
 		pane.add(pixelHolder(), BorderLayout.CENTER);
+		pane.add(RGBHolder(), BorderLayout.LINE_END);
 	}
 	
 	/*
@@ -41,6 +43,18 @@ public class MainPanel extends JFrame
 		
 		holder.add(new PixelPanel());
 		
+		return holder;
+	}
+	
+	public static JPanel RGBHolder()
+	{
+		JPanel holder = new JPanel();
+		holder.setOpaque(false);
+		holder.setLayout(new BorderLayout());
+		
+		holder.add(new rgb.RGBMixer(), BorderLayout.CENTER);
+		
+		holder.setPreferredSize(new Dimension(325,600));
 		return holder;
 	}
 }

@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /*
- * This module currently serves purely as an example of a hardcoded RGB Mixer
+ * This module contains the RBGMixer
  */
 public class RGBMixer extends JPanel
 {
@@ -39,24 +39,24 @@ public class RGBMixer extends JPanel
 		
 		//Draw Bars
 		g2.setColor(new Color(red, green, blue));
-		g2.fillRect(100, 50, 200, 100);
+		g2.fillRect(50, 50, 200, 100);
 		
 		g2.setColor(Color.RED);
-		g2.fillRect(100, 160 + (255-red), 50, red);
+		g2.fillRect(50, 160 + (255-red), 50, red);
 		
 		g2.setColor(Color.GREEN);
-		g2.fillRect(175, 160 + (255-green), 50, green);
+		g2.fillRect(125, 160 + (255-green), 50, green);
 		
 		g2.setColor(Color.BLUE);
-		g2.fillRect(250, 160 + (255-blue), 50, blue);
+		g2.fillRect(200, 160 + (255-blue), 50, blue);
 		
 		//Draw boundaries over bars
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(5));
-		g2.drawRect(100, 50, 200, 100);
-		g2.drawRect(100, 160, 50, 255);
-		g2.drawRect(175, 160, 50, 255);
-		g2.drawRect(250, 160, 50, 255);
+		g2.drawRect(50, 50, 200, 100);
+		g2.drawRect(50, 160, 50, 255);
+		g2.drawRect(125, 160, 50, 255);
+		g2.drawRect(200, 160, 50, 255);
 	}
 	
 	private JPanel textFields()
@@ -72,18 +72,18 @@ public class RGBMixer extends JPanel
 		redField = new JFormattedTextField(formatter);
 		redField.getDocument().addDocumentListener(new RGBDocumentListener(Color.RED, this));
 		redField.setValue(0);
-		redField.setBounds(110,435,30,20);
+		redField.setBounds(60,435,30,20);
 		redField.setFocusable(true);
 		
 		greenField = new JFormattedTextField(formatter);
 		greenField.getDocument().addDocumentListener(new RGBDocumentListener(Color.GREEN, this));
 		greenField.setValue(0);
-		greenField.setBounds(185,435,30,20);
+		greenField.setBounds(135,435,30,20);
 		
 		blueField = new JFormattedTextField(formatter);
 		blueField.getDocument().addDocumentListener(new RGBDocumentListener(Color.BLUE, this));
 		blueField.setValue(0);
-		blueField.setBounds(260,435,30,20);
+		blueField.setBounds(210,435,30,20);
 		
 		pane.add(redField);
 		pane.add(blueField);
@@ -124,5 +124,10 @@ public class RGBMixer extends JPanel
 			greenField.setValue(val);
 		}
 		repaint();
+	}
+	
+	public Color getColor()
+	{
+		return new Color(red, green, blue);
 	}
 }

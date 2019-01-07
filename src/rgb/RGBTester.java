@@ -1,7 +1,7 @@
 package rgb;
 
 import javax.swing.*;
-
+//THIS CLASS USED ONLY TO TEST RGBMixer INDIVIDUALLY
 public class RGBTester extends JFrame
 {
 	private static final long serialVersionUID = 1L;
@@ -18,7 +18,7 @@ public class RGBTester extends JFrame
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800,700);
+		setSize(325,600);
 		
 		add(new RGBMixer());
 	}
