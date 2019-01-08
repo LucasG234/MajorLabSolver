@@ -7,7 +7,10 @@ import rgb.*;
 public class MainPanel extends JFrame
 {
 	private static final long serialVersionUID = 1L;
-
+	
+	//Mixer is stored to be supplied to Panel
+	private RGBMixer mixer;
+	
 	/*
 	 * Primary panel holding UI
 	 */
@@ -26,33 +29,35 @@ public class MainPanel extends JFrame
 		//Default action of program
 		Container pane = getContentPane();
 		pane.setLayout(new BorderLayout());
-				
-		pane.add(pixelHolder(), BorderLayout.CENTER);
+		
+		//Initialize the current color before the pixel board
 		pane.add(RGBHolder(), BorderLayout.LINE_END);
+		pane.add(pixelHolder(mixer), BorderLayout.CENTER);
 	}
 	
 	/*
 	 * FlowLayout allows main canvas to move instead of resizing
 	 * when window is resized
 	 */
-	public static JPanel pixelHolder()
+	public JPanel pixelHolder(RGBMixer mixer)
 	{
 		JPanel holder = new JPanel();
 		
 		holder.setLayout(new FlowLayout());
 		
-		holder.add(new PixelPanel());
+		holder.add(new PixelPanel(mixer));
 		
 		return holder;
 	}
 	
-	public static JPanel RGBHolder()
+	public JPanel RGBHolder()
 	{
 		JPanel holder = new JPanel();
 		holder.setOpaque(false);
 		holder.setLayout(new BorderLayout());
 		
-		holder.add(new rgb.RGBMixer(), BorderLayout.CENTER);
+		mixer = new rgb.RGBMixer();
+		holder.add(mixer, BorderLayout.CENTER);
 		
 		holder.setPreferredSize(new Dimension(325,600));
 		return holder;
