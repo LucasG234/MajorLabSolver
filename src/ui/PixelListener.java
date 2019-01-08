@@ -26,7 +26,6 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 	/*
 	 * Draw onto current pixel with drawRect
 	 * Saves information into the PixelPanel's Color[][]
-	 * TODO: add colors
 	 */
 	public void mouseClicked(MouseEvent e)
 	{

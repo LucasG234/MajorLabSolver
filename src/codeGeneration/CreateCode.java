@@ -74,7 +74,7 @@ public class CreateCode
 		out += String.format("public class %s extends Applet%n", classTitle);
 		out += "{\n";
 		out += "\tpublic void paint(Graphics g)";
-		out += "\t{\n";
+		out += "\t{\n\n";
 		return out;
 	}
 	
