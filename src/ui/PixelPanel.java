@@ -21,9 +21,10 @@ public class PixelPanel extends JPanel
 	//source of color information and current color
 	RGBMixer mixer;
 	
-	public PixelPanel(RGBMixer mixer)
+	public PixelPanel(RGBMixer mixer, JButton saveButton)
 	{
 		this.mixer = mixer;
+		saveButton.addActionListener(new SaveListener(xStep, yStep, this));
 		
 		for(int r = 0; r < colors.length; r++)
 			for(int c = 0; c < colors[r].length; c++)
@@ -40,7 +41,6 @@ public class PixelPanel extends JPanel
 		
 		addMouseListener(listener);
 		addMouseMotionListener(listener);
-		addKeyListener(listener);
 	}
 	
 	/*

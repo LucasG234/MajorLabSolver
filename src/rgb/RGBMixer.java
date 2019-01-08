@@ -15,6 +15,7 @@ public class RGBMixer extends JPanel
 	
 	public RGBMixer()
 	{
+		//Default color of black
 		red = 0;
 		green = 0;
 		blue = 0;

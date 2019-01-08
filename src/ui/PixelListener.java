@@ -6,12 +6,12 @@ import codeGeneration.*;
 import rgb.*;
 
 /*
- * Multipurpose listener used for keyboard and mouse input within PixelPanel
+ * Multipurpose listener used for mouse input within PixelPanel
  */
-public class PixelListener implements MouseMotionListener, MouseListener, KeyListener
+public class PixelListener implements MouseMotionListener, MouseListener
 {
-	int xStep;
-	int yStep;
+	private int xStep;
+	private int yStep;
 	
 	//source of Color information
 	private RGBMixer mixer;
@@ -52,13 +52,6 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 		mouseClicked(e);
 	}
 
-	//Currently testing save feature on any key press
-	public void keyTyped(KeyEvent arg0)
-	{
-		PixelPanel source = (PixelPanel)arg0.getSource();
-		
-		System.out.println(CreateCode.generateJava("Test", source.colors, xStep, yStep));
-	}
 	
 	//No action required on these triggers
 	
@@ -71,9 +64,4 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 	public void mouseEntered(MouseEvent e){}
 	
 	public void mouseExited(MouseEvent e){}
-	
-	public void keyPressed(KeyEvent arg0){}
-	
-	public void keyReleased(KeyEvent arg0){}
-
 }
