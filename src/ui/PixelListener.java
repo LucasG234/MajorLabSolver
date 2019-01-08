@@ -3,6 +3,7 @@ package ui;
 import java.awt.*;
 import java.awt.event.*;
 import codeGeneration.*;
+import rgb.*;
 
 /*
  * Multipurpose listener used for keyboard and mouse input within PixelPanel
@@ -12,10 +13,14 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 	int xStep;
 	int yStep;
 	
-	public PixelListener(int xStep, int yStep)
+	//source of Color information
+	private RGBMixer mixer;
+	
+	public PixelListener(int xStep, int yStep, RGBMixer mixer)
 	{
 		this.xStep = xStep;
 		this.yStep = yStep;
+		this.mixer = mixer;
 	}
 	
 	/*
@@ -34,7 +39,11 @@ public class PixelListener implements MouseMotionListener, MouseListener, KeyLis
 		//Check if in bounds
 		if(y > 0 && x > 0 && y < source.getHeight() && x < source.getWidth())
 		{
-			source.colors[y / yStep][x / xStep] = source.curr;
+			Color curr = mixer.getColor();
+			//Store the color so can be used later
+			source.colors[y / yStep][x / xStep] = curr;
+			//Draw it initially
+			g.setColor(curr);
 			g.fillRect((x - x % xStep), (y - y%yStep), xStep, yStep);
 		}
 	}

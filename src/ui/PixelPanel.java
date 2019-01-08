@@ -15,9 +15,6 @@ public class PixelPanel extends JPanel
 	
 	Color[][] colors = new Color[size.height / yStep][size.width / xStep];
 	
-	//Stores current color (Default = black)
-	Color curr = Color.BLACK;
-	
 	//Color of the background (ADD FUNCTIONALITY)
 	Color background = Color.WHITE;
 	
@@ -27,14 +24,13 @@ public class PixelPanel extends JPanel
 	public PixelPanel(RGBMixer mixer)
 	{
 		this.mixer = mixer;
-		curr = mixer.getColor();
 		
 		for(int r = 0; r < colors.length; r++)
 			for(int c = 0; c < colors[r].length; c++)
 				colors[r][c] = background;
 		
 		
-		PixelListener listener = new PixelListener(xStep,yStep);
+		PixelListener listener = new PixelListener(xStep,yStep, mixer);
 		
 		setFocusable(true);
 		
