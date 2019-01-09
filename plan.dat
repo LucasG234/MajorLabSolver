@@ -20,3 +20,6 @@ Save & Parse for later use (in Java & as an image)
 
 verification of valid class name
 private variables (security upgrades)
+
+TODO
+change String method parameters

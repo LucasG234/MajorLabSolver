@@ -16,21 +16,19 @@ public class PixelPanel extends JPanel
 	Color[][] colors = new Color[size.height / yStep][size.width / xStep];
 	
 	//Color of the background (ADD FUNCTIONALITY)
-	Color background = Color.WHITE;
+	private Color background = Color.WHITE;
 	
-	//source of color information and current color
-	RGBMixer mixer;
+	//Controls drawing
+	private PixelListener listener;
 	
 	public PixelPanel(RGBMixer mixer)
 	{
-		this.mixer = mixer;
 		
 		for(int r = 0; r < colors.length; r++)
 			for(int c = 0; c < colors[r].length; c++)
 				colors[r][c] = background;
 		
-		
-		PixelListener listener = new PixelListener(xStep,yStep, mixer);
+		listener = new PixelListener(xStep,yStep, mixer);
 		
 		setFocusable(true);
 		
@@ -58,6 +56,13 @@ public class PixelPanel extends JPanel
 			}
 	}
 	
+	//this method only sends info to the PixelListener
+	public void setDraw(String typeDraw)
+	{
+		listener.setDrawType(typeDraw);
+	}
+	
+	//Clears the screen completely
 	public void clear()
 	{
 		for(int y = 0; y < colors.length; y++)

@@ -1,4 +1,4 @@
-package codeGeneration;
+package dataStructures;
 
 /*
  * Class used easily to store relative pixel locations

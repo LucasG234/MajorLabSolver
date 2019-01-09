@@ -3,6 +3,8 @@ package codeGeneration;
 import java.awt.*;
 import java.util.*;
 
+import dataStructures.Coord;
+
 public class CreateCode
 {
 	/*

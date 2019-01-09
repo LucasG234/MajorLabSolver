@@ -24,16 +24,19 @@ public class SidePanel extends JPanel
 		holder.setPreferredSize(new Dimension(325,600));
 		
 		JButton drawType = new JButton("Current drawing style: Brush");
-		drawType.setActionCommand("Draw");
+		drawType.setActionCommand("ToFill");
 		drawType.addActionListener(new ButtonListener(panel));
+		drawType.setPreferredSize(new Dimension(200,30));
 		
 		JButton clear = new JButton("Clear the Screen");
 		clear.setActionCommand("Clear");
 		clear.addActionListener(new ButtonListener(panel));
+		clear.setPreferredSize(new Dimension(200,30));
 		
 		JButton save = new JButton("Export as Java Code");
 		save.setActionCommand("Save");
 		save.addActionListener(new ButtonListener(panel));
+		clear.setPreferredSize(new Dimension(200,30));
 		
 		add(holder);
 		add(drawType);

@@ -2,6 +2,9 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
+import dataStructures.Coord;
 import rgb.*;
 
 /*
@@ -15,11 +18,15 @@ public class PixelListener implements MouseMotionListener, MouseListener
 	//source of Color information
 	private RGBMixer mixer;
 	
+	private String drawType;
+	
 	public PixelListener(int xStep, int yStep, RGBMixer mixer)
 	{
 		this.xStep = xStep;
 		this.yStep = yStep;
 		this.mixer = mixer;
+		//default drawType is brush
+		drawType = "Brush";
 	}
 	
 	/*
@@ -32,18 +39,35 @@ public class PixelListener implements MouseMotionListener, MouseListener
 		int y = e.getY();
 		
 		PixelPanel source = (PixelPanel)e.getSource();
-		Graphics g = source.getGraphics();
 		
 		//Check if in bounds
 		if(y > 0 && x > 0 && y < source.getHeight() && x < source.getWidth())
 		{
 			Color curr = mixer.getColor();
-			//Store the color so can be used later
-			source.colors[y / yStep][x / xStep] = curr;
-			//Draw it initially
-			g.setColor(curr);
-			g.fillRect((x - x % xStep), (y - y%yStep), xStep, yStep);
+			
+			if(drawType.equals("Fill"))
+			{
+				ArrayList<Coord> connected = findConnected(source.colors, y / yStep, x / xStep);
+			}
+			else		//Defaults to Brush in case of any error
+			{
+				source.colors[y / yStep][x / xStep] = curr;
+				source.repaint();
+			}
 		}
+	}
+	
+	public ArrayList<Coord> findConnected(Color[][] colors, int y, int x)
+	{
+		ArrayList<Coord> connected = new ArrayList<>();
+		
+		
+		return connected;
+	}
+	
+	public void setDrawType(String drawType)
+	{
+		this.drawType = drawType;
 	}
 	
 	public void mouseDragged(MouseEvent e)
