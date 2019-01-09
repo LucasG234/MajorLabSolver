@@ -10,10 +10,10 @@ public class ButtonListener implements ActionListener
 	private int yStep;
 	private PixelPanel source;
 	
-	public ButtonListener(int xStep, int yStep, PixelPanel source)
+	public ButtonListener(PixelPanel source)
 	{
-		this.xStep = xStep;
-		this.yStep = yStep;
+		this.xStep = source.xStep;
+		this.yStep = source.yStep;
 		this.source = source;
 	}
 	
@@ -29,6 +29,7 @@ public class ButtonListener implements ActionListener
 		{
 			source.clear();
 		}
+		
 	}
 
 }
