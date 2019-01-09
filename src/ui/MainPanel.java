@@ -52,32 +52,4 @@ public class MainPanel extends JFrame
 		
 		return holder;
 	}
-	
-//	public JPanel sidePanel()
-//	{
-//		JPanel side = new JPanel();
-//		side.setLayout(new BoxLayout(side, BoxLayout.Y_AXIS));
-//		
-//		//holder contains the RGBMixer
-//		JPanel holder = new JPanel();
-//		holder.setOpaque(false);
-//		holder.setLayout(new BorderLayout());
-//		
-//		mixer = new rgb.RGBMixer();
-//		holder.add(mixer, BorderLayout.CENTER);
-//		
-//		holder.setPreferredSize(new Dimension(325,600));
-//		
-//		clear = new JButton("Clear the Screen");
-//		clear.setActionCommand("Clear");
-//		
-//		save = new JButton("Export as Java Code");
-//		save.setActionCommand("Save");
-//		
-//		side.add(holder);
-//		side.add(clear);
-//		side.add(save);
-//		
-//		return side;
-//	}
 }

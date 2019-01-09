@@ -10,17 +10,23 @@ public class SidePanel extends JPanel
 	
 	public SidePanel(PixelPanel panel, RGBMixer mixer)
 	{
+		setBackground(Color.WHITE);
+		setOpaque(true);
+		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		//holder contains the RGBMixer
 		JPanel holder = new JPanel();
-		holder.setOpaque(false);
 		holder.setLayout(new BorderLayout());
 		
 		mixer = new rgb.RGBMixer();
 		holder.add(mixer, BorderLayout.CENTER);
 		
 		holder.setPreferredSize(new Dimension(325,600));
+		
+		JButton drawType = new JButton("Current drawing style: Brush");
+		drawType.setActionCommand("Draw");
+		drawType.addActionListener(new ButtonListener(panel));
 		
 		JButton clear = new JButton("Clear the Screen");
 		clear.setActionCommand("Clear");
@@ -31,6 +37,7 @@ public class SidePanel extends JPanel
 		save.addActionListener(new ButtonListener(panel));
 		
 		add(holder);
+		add(drawType);
 		add(clear);
 		add(save);
 	}
