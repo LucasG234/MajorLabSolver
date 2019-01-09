@@ -19,7 +19,6 @@ public class SidePanel extends JPanel
 		JPanel holder = new JPanel();
 		holder.setLayout(new BorderLayout());
 		
-		mixer = new rgb.RGBMixer();
 		holder.add(mixer, BorderLayout.CENTER);
 		
 		holder.setPreferredSize(new Dimension(325,600));
