@@ -2,7 +2,6 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
-import codeGeneration.*;
 import rgb.*;
 
 /*
@@ -52,7 +51,6 @@ public class PixelListener implements MouseMotionListener, MouseListener
 		mouseClicked(e);
 	}
 
-	
 	//No action required on these triggers
 	
 	public void mouseMoved(MouseEvent e) {}
@@ -62,6 +60,6 @@ public class PixelListener implements MouseMotionListener, MouseListener
 	public void mouseReleased(MouseEvent e){}
 
 	public void mouseEntered(MouseEvent e){}
-	
+	 
 	public void mouseExited(MouseEvent e){}
 }

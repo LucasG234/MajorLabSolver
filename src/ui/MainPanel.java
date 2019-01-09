@@ -8,9 +8,10 @@ public class MainPanel extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	
-	//Mixer and SaveButton is stored to be supplied to Panel
+	//Mixer and buttons are stored to be supplied to PixelPanel
 	private RGBMixer mixer;
 	private JButton save;
+	private JButton clear;
 	
 	/*
 	 * Primary panel holding UI
@@ -33,20 +34,20 @@ public class MainPanel extends JFrame
 		
 		//Initialize the current color before the pixel board
 		pane.add(sidePanel(), BorderLayout.LINE_END);
-		pane.add(pixelHolder(mixer, save), BorderLayout.CENTER);
+		pane.add(pixelHolder(mixer, save, clear), BorderLayout.CENTER);
 	}
 	
 	/*
 	 * FlowLayout allows main canvas to move instead of resizing
 	 * when window is resized
 	 */
-	public JPanel pixelHolder(RGBMixer mixer, JButton save)
+	public JPanel pixelHolder(RGBMixer mixer, JButton save, JButton clear)
 	{
 		JPanel holder = new JPanel();
 		
 		holder.setLayout(new FlowLayout());
 		
-		holder.add(new PixelPanel(mixer, save));
+		holder.add(new PixelPanel(mixer, save, clear));
 		
 		return holder;
 	}
@@ -66,11 +67,14 @@ public class MainPanel extends JFrame
 		
 		holder.setPreferredSize(new Dimension(325,600));
 		
+		clear = new JButton("Clear the Screen");
+		clear.setActionCommand("Clear");
+		
+		save = new JButton("Export as Java Code");
+		save.setActionCommand("Save");
+		
 		side.add(holder);
-		
-		save = new JButton();
-		save.setText("Export as Java Code");
-		
+		side.add(clear);
 		side.add(save);
 		
 		return side;
