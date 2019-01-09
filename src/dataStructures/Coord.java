@@ -18,4 +18,18 @@ public class Coord
 	{
 		return String.format("[%d, %d]", r, c);
 	}
+
+	public boolean equals(Object other)
+	{
+		if(!(other instanceof Coord))
+			return false;
+		
+		Coord two = (Coord)other;
+		
+		if(r == two.r && c == two.c)
+			return true;
+		
+		else
+			return false;
+	}
 }
