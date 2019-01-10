@@ -50,7 +50,7 @@ public class RGBDocumentListener implements DocumentListener
 		{
 			if(num > 256)
 				num = 255;
-			source.setColor(col, num);
+			source.setColorVal(col, num);
 		}
 	}
 

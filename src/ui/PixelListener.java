@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.LinkedList;
 
+import javax.swing.SwingUtilities;
+
 import dataStructures.Coord;
 import rgb.*;
 
@@ -61,6 +63,15 @@ public class PixelListener implements MouseMotionListener, MouseListener
 				source.colors[y / yStep][x / xStep] = curr;
 				source.repaint();
 			}
+		}
+	}
+	
+	//Copy color on right click
+	public void mouseReleased(MouseEvent e)
+	{
+		if(SwingUtilities.isRightMouseButton(e))
+		{
+			
 		}
 	}
 	
@@ -172,8 +183,6 @@ public class PixelListener implements MouseMotionListener, MouseListener
 	public void mouseMoved(MouseEvent e) {}
 
 	public void mousePressed(MouseEvent e){}
-
-	public void mouseReleased(MouseEvent e){}
 
 	public void mouseEntered(MouseEvent e){}
 	 
