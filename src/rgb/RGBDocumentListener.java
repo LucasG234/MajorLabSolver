@@ -60,7 +60,5 @@ public class RGBDocumentListener implements DocumentListener
 	}
 	
 	//unused in TextFields without styling
-	public void changedUpdate(DocumentEvent e)
-	{
-	}
+	public void changedUpdate(DocumentEvent e){}
 }

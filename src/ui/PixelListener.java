@@ -71,6 +71,17 @@ public class PixelListener implements MouseMotionListener, MouseListener
 	{
 		if(SwingUtilities.isRightMouseButton(e))
 		{
+			int x = e.getX();
+			int y = e.getY();
+			
+			PixelPanel source = (PixelPanel)e.getSource();
+			
+			//Check if in bounds
+			if(y > 0 && x > 0 && y < source.getHeight() && x < source.getWidth())
+			{
+				Color newCol = source.colors[y / yStep][ x / xStep];
+				mixer.setAllColor(newCol);
+			}
 			
 		}
 	}

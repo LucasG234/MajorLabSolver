@@ -93,11 +93,14 @@ public class RGBMixer extends JPanel
 		return(pane);
 	}
 	
-	public void setColor(Color c)
+	public void setAllColor(Color c)
 	{
 		red = c.getRed();
+		redField.setValue(red);
 		green = c.getGreen();
+		greenField.setValue(green);
 		blue = c.getBlue();
+		blueField.setValue(blue);
 	}
 	
 	public void setColorVal(Color c, int val)
@@ -105,16 +108,31 @@ public class RGBMixer extends JPanel
 		if(c == Color.RED)
 		{
 			red = val;
-			redField.setValue(val);
 		}
 		else if(c == Color.BLUE)
 		{
 			blue = val;
-			blueField.setValue(val);
 		}
 		else if(c == Color.GREEN)
 		{
 			green = val;
+		}
+		repaint();
+	}
+	
+	//ColorVal and ColorField must be set separately due to initialization problems
+	public void setColorField(Color c, int val)
+	{
+		if(c == Color.RED)
+		{
+			redField.setValue(val);
+		}
+		else if(c == Color.BLUE)
+		{
+			blueField.setValue(val);
+		}
+		else if(c == Color.GREEN)
+		{
 			greenField.setValue(val);
 		}
 		repaint();
